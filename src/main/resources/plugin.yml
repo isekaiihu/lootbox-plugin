@@ -1,0 +1,20 @@
+name: LootboxPlugin
+version: '${project.version}'
+main: com.isekai.lootbox.LootboxPlugin
+api-version: '1.21'
+author: ISekai
+description: A customizable lootbox plugin with random and select reward options
+
+commands:
+  lootbox:
+    description: Main lootbox command
+    usage: /<command> <create|item|give|rewards|type|limit|delete|list|reload> [args...]
+    permission: lootbox.admin
+
+permissions:
+  lootbox.admin:
+    description: Allows access to all lootbox admin commands
+    default: op
+  lootbox.use:
+    description: Allows players to use lootboxes
+    default: true

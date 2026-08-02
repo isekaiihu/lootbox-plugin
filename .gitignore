@@ -1,0 +1,15 @@
+# IDE
+.idea/
+*.iml
+
+# Build output
+target/
+build/
+out/
+bin/
+
+# Version control
+.git/
+
+# Logs
+*.log

@@ -1,0 +1,204 @@
+# =============================================
+# Lootbox Plugin Configuration
+# All messages, GUIs, and settings are customizable
+# =============================================
+
+# =============================================
+# MESSAGES - All plugin messages (supports color codes with &)
+# =============================================
+messages:
+  prefix: "&8[&6Lootbox&8] "
+  
+  # General messages
+  no-permission: "&cYou don't have permission to use this command!"
+  player-only: "&cThis command can only be used by players!"
+  lootbox-not-found: "&cLootbox '%name%' not found!"
+  player-not-found: "&cPlayer '%name%' not found!"
+  
+  # Create command
+  lootbox-created: "&aLootbox '%name%' created with %rows% rows!"
+  lootbox-already-exists: "&cA lootbox with that name already exists!"
+  invalid-rows: "&cRows must be between 1 and 6!"
+  
+  # Item command
+  item-set: "&aDisplay item for lootbox '%name%' has been set!"
+  hold-item: "&cYou must hold an item to set as the lootbox display item!"
+  
+  # Give command
+  lootbox-given: "&aGave %amount%x lootbox '%name%' to %player%!"
+  lootbox-received: "&aYou received %amount%x lootbox '%name%'!"
+  invalid-amount: "&cAmount must be between 1 and 64!"
+  
+  # Delete command
+  lootbox-deleted: "&aLootbox '%name%' has been deleted!"
+  
+  # Type command
+  type-set: "&aLootbox '%name%' type set to %type%!"
+  invalid-type: "&cInvalid type! Use: normal, fullinv"
+  
+  # Reward limit command
+  reward-limit-set: "&aLootbox '%name%' reward limit set to %limit%!"
+  invalid-limit: "&cReward limit must be at least 1!"
+  
+  # List command
+  no-lootboxes: "&eNo lootboxes have been created yet."
+  list-header: "&6=== Lootboxes ==="
+  list-entry: "&e- %name% &7(%rewards% rewards, %rows% rows, %type%, limit: %limit%)"
+  
+  # Rewards
+  rewards-saved: "&aRewards saved for lootbox '%name%'!"
+  no-rewards: "&cThis lootbox has no rewards!"
+  lootbox-no-longer-exists: "&cThis lootbox no longer exists!"
+  no-use-permission: "&cYou don't have permission to use lootboxes!"
+  
+  # Random reward
+  random-reward-received: "&aYou received a random reward!"
+  random-rewards-received: "&aYou received %amount% random rewards!"
+  
+  # Select reward
+  no-rewards-to-select: "&cThis lootbox has no rewards to select!"
+  reward-selected: "&aYou selected a reward! Close the GUI to claim it."
+  max-selections-reached: "&cYou've already selected the maximum number of rewards!"
+  
+  # Claim result
+  selected-reward-received: "&aYou received your selected reward!"
+  selected-rewards-received: "&aYou received %amount% selected rewards!"
+  no-selection-made: "&eYou didn't select a reward."
+  remaining-claims: "&eYou have %remaining% remaining claims. Open the lootbox again to claim them!"
+  
+  # Fullinv type
+  fullinv-claimed: "&aYou claimed all rewards from the lootbox!"
+  
+  # Items dropped
+  items-dropped: "&eSome items were dropped on the ground because your inventory was full!"
+
+  # Help command
+  help-header: "&6=== Lootbox Commands ==="
+  help-create: "&e/lootbox create <name> <rows> &7- Create a lootbox"
+  help-item: "&e/lootbox item <name> &7- Set lootbox display item (held item)"
+  help-give: "&e/lootbox give <name> <player> [amount] &7- Give lootbox to player"
+  help-rewards: "&e/lootbox rewards <name> &7- Edit lootbox rewards"
+  help-type: "&e/lootbox type <name> <normal|fullinv> &7- Set lootbox type"
+  help-limit: "&e/lootbox limit <name> <amount> &7- Set reward limit"
+  help-delete: "&e/lootbox delete <name> &7- Delete a lootbox"
+  help-list: "&e/lootbox list &7- List all lootboxes"
+  help-reload: "&e/lootbox reload &7- Reload configuration"
+  
+  # Reload
+  config-reloaded: "&aConfiguration reloaded!"
+
+# =============================================
+# GUI SETTINGS - Customize all GUI appearances
+# =============================================
+guis:
+  # Open lootbox GUI (Random/Select choice)
+  open-gui:
+    title: "&5Lootbox: &6%name%"
+    rows: 3
+    
+    # Filler/background item
+    filler:
+      enabled: true
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+    
+    # Random reward button
+    random-button:
+      slot: 11
+      material: LIME_STAINED_GLASS_PANE
+      name: "&a&lRANDOM &fReward"
+      lore:
+        - "&7Click to get a random reward!"
+        - "&7Each reward has an equal chance."
+        - ""
+        - "&eRewards: &f%limit%"
+    
+    # Select reward button
+    select-button:
+      slot: 15
+      material: LIGHT_BLUE_STAINED_GLASS_PANE
+      name: "&b&lSELECT &fReward"
+      lore:
+        - "&7Click to choose your reward!"
+        - "&7Select any item you want."
+        - ""
+        - "&eMax selections: &f%limit%"
+    
+    # Preview item slot (shows first reward)
+    preview:
+      enabled: true
+      slot: 13
+  
+  # Reward selection GUI
+  select-gui:
+    title: "&5Select Reward: &6%name% &7(%selected%/%limit%)"
+    
+    # Selected item indicator
+    selected-indicator:
+      material: LIME_STAINED_GLASS_PANE
+    
+    # Confirm selection button (optional, -1 to disable)
+    confirm-button:
+      enabled: true
+      slot: -1  # -1 means last row center
+      material: EMERALD_BLOCK
+      name: "&a&lCONFIRM SELECTION"
+      lore:
+        - "&7Click to confirm your selections!"
+        - "&eSelected: &f%selected%/%limit%"
+  
+  # Reward editor GUI (for admins)
+  editor-gui:
+    title: "&5Edit Rewards: &6%name%"
+  
+  # Fullinv claim GUI
+  fullinv-gui:
+    title: "&5Claim Rewards: &6%name%"
+    rows: 3
+    
+    # Filler/background item
+    filler:
+      enabled: true
+      material: GRAY_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+    
+    # Claim button
+    claim-button:
+      slot: 13
+      material: EMERALD_BLOCK
+      name: "&a&lCLAIM ALL REWARDS"
+      lore:
+        - "&7Click to claim all rewards!"
+        - "&7You will receive one of each item."
+        - ""
+        - "&eTotal items: &f%rewards%"
+    
+    # Preview slots (show some rewards around the claim button)
+    preview-slots:
+      - 10
+      - 11
+      - 12
+      - 14
+      - 15
+      - 16
+
+# =============================================
+# SOUNDS - Customize sounds (empty to disable)
+# =============================================
+sounds:
+  open-lootbox: "BLOCK_CHEST_OPEN"
+  select-reward: "UI_BUTTON_CLICK"
+  receive-reward: "ENTITY_PLAYER_LEVELUP"
+  claim-fullinv: "ENTITY_PLAYER_LEVELUP"
+
+# =============================================
+# DEFAULT LOOTBOX SETTINGS
+# =============================================
+defaults:
+  # Default lootbox type: normal or fullinv
+  type: normal
+  
+  # Default reward limit for new lootboxes
+  reward-limit: 1
